@@ -5,12 +5,10 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 var megabounce = 0
-var height = 0
-var final_height = 0
 
 func _physics_process(delta: float) -> void:
 	print(position.y)
-	
+ 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -36,8 +34,7 @@ func _physics_process(delta: float) -> void:
 		if megabounce == 0:
 			velocity.y = JUMP_VELOCITY
 		else:
-			velocity.y = 1.35 * JUMP_VELOCITY
+			velocity.y = 1.4 * JUMP_VELOCITY
 			megabounce = 0
-		height = 0
 	
 	move_and_slide()

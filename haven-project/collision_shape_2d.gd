@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	print(health)
 
 
-func _on_fire_hitbox_body_entered(body: Node2D) -> void:
+func _on_fire_hitbox_body_entered(body: CharacterBody2D) -> void:
 	health -= 1
 	if health == 0:
 		get_tree().quit()
