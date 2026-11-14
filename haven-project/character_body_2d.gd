@@ -8,10 +8,8 @@ var megabounce = 0
 var height = 0
 var final_height = 0
 
-var health = 3
-
 func _physics_process(delta: float) -> void:
-	print(height)
+	print(position.y)
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -43,9 +41,3 @@ func _physics_process(delta: float) -> void:
 		height = 0
 	
 	move_and_slide()
-
-
-func _on_fire_hitbox_body_entered(body: Node2D) -> void:
-	health -= 1
-	if health == 0:
-		get_tree().quit()

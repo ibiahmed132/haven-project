@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqnbx3d1wp0jj"
-path="res://.godot/imported/Characters.png-88d61f11b026c46e349cac528f4324fe.ctex"
+uid="uid://cc3urksycs27r"
+path="res://.godot/imported/(Polar_34) Tiling Dirt just in case.png-514c6fb333ee47473ba318d7a8bdb43d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters.png"
-dest_files=["res://.godot/imported/Characters.png-88d61f11b026c46e349cac528f4324fe.ctex"]
+source_file="res://drive-download-20261114T131144Z-1-001/(Polar_34) Tiling Dirt just in case.png"
+dest_files=["res://.godot/imported/(Polar_34) Tiling Dirt just in case.png-514c6fb333ee47473ba318d7a8bdb43d.ctex"]
 
 [params]
 
