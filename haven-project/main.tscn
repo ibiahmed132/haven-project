@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cehkclasmvi6h" path="res://fire1.png" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://duih20rhxnbfg" path="res://fire2.png" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://vr2k5n1uoowy" path="res://torch_1.gd" id="6_efxa6"]
-[ext_resource type="Script" uid="uid://c4cajgcv0hiwu" path="res://static_body_2d.gd" id="7_dg77c"]
+[ext_resource type="Script" uid="uid://cuhw0hocp5jyc" path="res://animatable_body_2d.gd" id="7_dg77c"]
 [ext_resource type="Texture2D" uid="uid://clcalh72jf6kg" path="res://fire3.png" id="7_kek77"]
 [ext_resource type="Script" uid="uid://r0im33bqu6f8" path="res://collision_shape_2d.gd" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://c43wn70lchwtr" path="res://area_2d.gd" id="8_kek77"]
@@ -332,30 +332,32 @@ tile_map_data = PackedByteArray("AAAHAAcAAAAAAAAAAAAHAAgAAAAAAAEAAAAHAAkAAAAAAAI
 tile_set = SubResource("TileSet_g4v7s")
 
 [node name="Torch1" type="Sprite2D" parent="." unique_id=467094536]
-position = Vector2(370, -86.99998)
+position = Vector2(358.00003, -109.999985)
 rotation = -1.0227629
 scale = Vector2(0.15679769, 0.15679765)
 texture = ExtResource("4_1bvp3")
 script = ExtResource("6_efxa6")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Torch1" unique_id=243438468]
-scale = Vector2(1.0000001, 1.0000001)
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Torch1" unique_id=1659868194]
+position = Vector2(-1788.3687, -1583.3157)
+rotation = 1.022763
+scale = Vector2(6.377647, 6.377646)
 script = ExtResource("7_dg77c")
 
-[node name="AnimatedFire" type="AnimatedSprite2D" parent="Torch1/StaticBody2D" unique_id=154053790]
-position = Vector2(462.51672, -768.48987)
-rotation = 1.1222467
-scale = Vector2(1.405986, 1.7287778)
+[node name="AnimatedFire" type="AnimatedSprite2D" parent="Torch1/AnimatableBody2D" unique_id=154053790]
+position = Vector2(292.9338, -234.68114)
+rotation = 0.09948373
+scale = Vector2(0.22045529, 0.2710684)
 sprite_frames = SubResource("SpriteFrames_yf5fn")
-frame_progress = 0.39698422
+frame_progress = 0.82732713
 
-[node name="Fire_Hitbox" type="Area2D" parent="Torch1/StaticBody2D/AnimatedFire" unique_id=2131539710]
+[node name="Fire_Hitbox" type="Area2D" parent="Torch1/AnimatableBody2D/AnimatedFire" unique_id=2131539710]
 script = ExtResource("8_kek77")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Torch1/StaticBody2D/AnimatedFire/Fire_Hitbox" unique_id=1367337]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Torch1/AnimatableBody2D/AnimatedFire/Fire_Hitbox" unique_id=1367337]
 position = Vector2(3.9741268, 81.37164)
 rotation = 3.8397243
 shape = SubResource("CircleShape2D_g4v7s")
 script = ExtResource("8_5vw27")
 
-[connection signal="body_entered" from="Torch1/StaticBody2D/AnimatedFire/Fire_Hitbox" to="Marshy" method="_on_fire_hitbox_body_entered"]
+[connection signal="body_entered" from="Torch1/AnimatableBody2D/AnimatedFire/Fire_Hitbox" to="Marshy" method="_on_fire_hitbox_body_entered"]
