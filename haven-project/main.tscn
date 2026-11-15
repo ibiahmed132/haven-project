@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://65oe14nwuyxq" path="res://Screenshot 2026-11-14 113417.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dtisc1dlw3o1a" path="res://pigeonanimateablebody.gd" id="1_getpj"]
 [ext_resource type="Script" uid="uid://c36c5o5tgifym" path="res://character_body_2d.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://e38wa8aaww42" path="res://main.gd" id="1_jq2sk"]
 [ext_resource type="Texture2D" uid="uid://cc3urksycs27r" path="res://drive-download-20261114T131144Z-1-001/(Polar_34) Tiling Dirt just in case.png" id="1_yaehf"]
 [ext_resource type="Texture2D" uid="uid://dyep0tygpndwo" path="res://drive-download-20261114T131144Z-1-001/Scary Traced Robin.png" id="2_d13ii"]
 [ext_resource type="Texture2D" uid="uid://cypwxtwtggf2u" path="res://marshy1.png" id="2_w48qg"]
@@ -21,8 +22,11 @@
 [ext_resource type="Script" uid="uid://r0im33bqu6f8" path="res://collision_shape_2d.gd" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://def4kqs1hrv7f" path="res://hold_timer.gd" id="9_vivmo"]
 [ext_resource type="Texture2D" uid="uid://b4ch6bv4idfjf" path="res://drive-download-20261114T131144Z-1-001/Night BG.png" id="11_074og"]
+[ext_resource type="AudioStream" uid="uid://c4iehns6hinc5" path="res://sounds-20261115T102900Z-1-001/sounds/damage_1.wav" id="12_seu75"]
+[ext_resource type="AudioStream" uid="uid://m3i1pt0fmn2u" path="res://sounds-20261115T102900Z-1-001/sounds/Death_sound.mp3" id="13_htxhm"]
 [ext_resource type="Script" uid="uid://17vcr1qgyrxq" path="res://end_screen.gd" id="16_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://c078cjeo1aq7t" path="res://drive-download-20261114T131144Z-1-001/End Screen.png" id="16_yaehf"]
+[ext_resource type="AudioStream" uid="uid://ca3726rh61ohq" path="res://sounds-20261115T102900Z-1-001/sounds/background_music.wav" id="18_kq58d"]
 [ext_resource type="Script" uid="uid://25tmpyvo1mjd" path="res://firewall.gd" id="19_cegan"]
 [ext_resource type="Script" uid="uid://bpc1dlnusi710" path="res://torch_1_animateablebody_2.gd" id="21_ryguw"]
 [ext_resource type="Script" uid="uid://csetx7ivfrn4f" path="res://torch_2_timer.gd" id="22_d13ii"]
@@ -323,8 +327,7 @@ animations = [{
 radius = 265.69696
 
 [node name="Main" type="Node" unique_id=592567845]
-
-[node name="Ending Comic" type="Sprite2D" parent="." unique_id=665730323]
+script = ExtResource("1_jq2sk")
 
 [node name="Cloud" type="Sprite2D" parent="." unique_id=130910414]
 position = Vector2(160, -3186)
@@ -397,6 +400,15 @@ position = Vector2(-2, 5)
 shape = SubResource("CapsuleShape2D_074og")
 script = ExtResource("8_5vw27")
 
+[node name="Damage1" type="AudioStreamPlayer2D" parent="Marshy/CollisionShape2D" unique_id=525296070]
+stream = ExtResource("12_seu75")
+volume_db = 24.0
+pitch_scale = 1.4
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Marshy/CollisionShape2D" unique_id=1022379070]
+stream = ExtResource("13_htxhm")
+volume_db = 24.0
+
 [node name="Camera2D" type="Camera2D" parent="Marshy" unique_id=454720460]
 
 [node name="Sprite2D" type="Sprite2D" parent="Marshy/Camera2D" unique_id=1970974133]
@@ -420,6 +432,9 @@ script = ExtResource("16_2cqfq")
 
 [node name="HoldTimer" type="Timer" parent="Marshy" unique_id=989532333]
 script = ExtResource("9_vivmo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Marshy" unique_id=24378187]
+stream = ExtResource("18_kq58d")
 
 [node name="Torch1animateablebody" type="AnimatableBody2D" parent="." unique_id=1659868194]
 position = Vector2(-3.0517578e-05, 1.5258789e-05)
@@ -1239,7 +1254,9 @@ script = ExtResource("6_ycdy4")
 [connection signal="input_event" from="Marshy" to="Marshy/HoldTimer" method="_on_marshy_input_event"]
 [connection signal="pigeontime" from="Marshy" to="pigeonanimateablebody" method="_on_marshy_pigeontime"]
 [connection signal="pigeontime" from="Marshy" to="2pigeonanimateablebody2" method="_on_marshy_pigeontime"]
+[connection signal="youwin" from="Marshy" to="." method="_on_marshy_youwin"]
 [connection signal="youwin" from="Marshy" to="TileMapLayer" method="_on_marshy_youwin"]
+[connection signal="gameover" from="Marshy/CollisionShape2D" to="Marshy" method="_on_collision_shape_2d_gameover"]
 [connection signal="gameover" from="Marshy/CollisionShape2D" to="Torch1animateablebody" method="_on_collision_shape_2d_gameover"]
 [connection signal="gameover" from="Marshy/CollisionShape2D" to="Marshy/Camera2D/EndScreen" method="_on_collision_shape_2d_gameover"]
 [connection signal="gameover" from="Marshy/CollisionShape2D" to="firewall" method="_on_collision_shape_2d_gameover"]

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var hold_timer: Timer = $HoldTimer
+@onready var sound_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 const SPEED = 200
 const JUMP_VELOCITY = -400.0
@@ -12,6 +13,9 @@ signal pigeontime
 signal youwin
 
 @onready var playbox = $CollisionShape2D
+
+func _ready() -> void:
+	sound_player.play()
 
 func _physics_process(delta: float) -> void:
 	var lives = playbox.health
@@ -71,5 +75,10 @@ func _on_2pigeonarea_body_entered(body: CharacterBody2D) -> void:
 
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+	sound_player.stop()
 	youwin.emit()
 	hide()
+
+
+func _on_collision_shape_2d_gameover() -> void:
+	sound_player.stop()
