@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	else:
 		set_frame(1)
 		
-	if $"..".velocity.x < 0:
+	if $"..".velocity.x <= 0:
 		flip_h = true
 	else:
 		flip_h = false

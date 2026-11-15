@@ -8,11 +8,13 @@
 [ext_resource type="Script" uid="uid://eyq0qnbp80xh" path="res://animated_sprite_2d.gd" id="4_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://cehkclasmvi6h" path="res://fire1.png" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://duih20rhxnbfg" path="res://fire2.png" id="6_5vw27"]
-[ext_resource type="Script" uid="uid://bco25kpv1hqeh" path="res://timer.gd" id="6_ycdy4"]
+[ext_resource type="Script" uid="uid://bco25kpv1hqeh" path="res://torch1timer.gd" id="6_ycdy4"]
 [ext_resource type="Script" uid="uid://cuhw0hocp5jyc" path="res://animatable_body_2d.gd" id="7_dg77c"]
 [ext_resource type="Texture2D" uid="uid://clcalh72jf6kg" path="res://fire3.png" id="7_kek77"]
+[ext_resource type="Texture2D" uid="uid://c8604ggs2m5ja" path="res://drive-download-20261114T131144Z-1-001/Health Hearts Melly.png" id="7_vivmo"]
+[ext_resource type="Script" uid="uid://dbxb2w3e86mcw" path="res://lives.gd" id="8_2cqfq"]
 [ext_resource type="Script" uid="uid://r0im33bqu6f8" path="res://collision_shape_2d.gd" id="8_5vw27"]
-[ext_resource type="Script" uid="uid://c43wn70lchwtr" path="res://area_2d.gd" id="8_kek77"]
+[ext_resource type="Script" uid="uid://def4kqs1hrv7f" path="res://hold_timer.gd" id="9_vivmo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 texture = ExtResource("2_h2yge")
@@ -304,6 +306,35 @@ animations = [{
 radius = 22.0
 height = 50.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vivmo"]
+atlas = ExtResource("7_vivmo")
+region = Rect2(168, 1331, 1258, 1282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cqfq"]
+atlas = ExtResource("7_vivmo")
+region = Rect2(1426, 1331, 1258, 1282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaehf"]
+atlas = ExtResource("7_vivmo")
+region = Rect2(2684, 1331, 1258, 1282)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cqfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaehf")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
 animations = [{
 "frames": [{
@@ -349,6 +380,15 @@ script = ExtResource("8_5vw27")
 
 [node name="Camera2D" type="Camera2D" parent="Marshy" unique_id=454720460]
 
+[node name="Lives" type="AnimatedSprite2D" parent="Marshy" unique_id=622334890]
+position = Vector2(-512, -255)
+scale = Vector2(0.1200318, 0.120031804)
+sprite_frames = SubResource("SpriteFrames_57qmd")
+script = ExtResource("8_2cqfq")
+
+[node name="HoldTimer" type="Timer" parent="Marshy" unique_id=989532333]
+script = ExtResource("9_vivmo")
+
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1659868194]
 position = Vector2(-3.0517578e-05, 1.5258789e-05)
 scale = Vector2(1.0000001, 1.0000001)
@@ -365,13 +405,12 @@ position = Vector2(420.70996, -748.3697)
 rotation = 1.1222467
 scale = Vector2(1.4059862, 1.8342253)
 sprite_frames = SubResource("SpriteFrames_yf5fn")
-frame_progress = 0.58846873
+autoplay = "default"
 
 [node name="Fire_Hitbox" type="Area2D" parent="AnimatableBody2D" unique_id=2131539710]
 position = Vector2(292.21124, -227.44223)
 rotation = 0.09948371
 scale = Vector2(0.22045532, 0.28760225)
-script = ExtResource("8_kek77")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Fire_Hitbox" unique_id=1367337]
 position = Vector2(-4.444824, 55.160034)
@@ -380,9 +419,12 @@ shape = SubResource("CircleShape2D_g4v7s")
 debug_color = Color(0, 0.6442841, 0.2899681, 0.41960785)
 script = ExtResource("8_5vw27")
 
-[node name="Timer" type="Timer" parent="AnimatableBody2D" unique_id=849827189]
+[node name="Torch1Timer" type="Timer" parent="AnimatableBody2D" unique_id=849827189]
 script = ExtResource("6_ycdy4")
 
+[connection signal="input_event" from="Marshy" to="Marshy/HoldTimer" method="_on_marshy_input_event"]
+[connection signal="timeout" from="Marshy/HoldTimer" to="Marshy" method="_on_hold_timer_timeout"]
 [connection signal="body_entered" from="AnimatableBody2D/Fire_Hitbox" to="Marshy" method="_on_fire_hitbox_body_entered"]
 [connection signal="body_entered" from="AnimatableBody2D/Fire_Hitbox" to="Marshy/CollisionShape2D" method="_on_fire_hitbox_body_entered"]
-[connection signal="timeout" from="AnimatableBody2D/Timer" to="AnimatableBody2D" method="_on_timer_timeout"]
+[connection signal="body_entered" from="AnimatableBody2D/Fire_Hitbox" to="Marshy/Lives" method="_on_fire_hitbox_body_entered"]
+[connection signal="timeout" from="AnimatableBody2D/Torch1Timer" to="AnimatableBody2D" method="_on_timer_timeout"]
