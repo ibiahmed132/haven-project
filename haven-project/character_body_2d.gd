@@ -9,6 +9,7 @@ var megabounce = 0
 var is_down = false
 
 signal pigeontime
+signal youwin
 
 @onready var playbox = $CollisionShape2D
 
@@ -67,3 +68,8 @@ func _on_pigeonarea_body_entered(body: CharacterBody2D) -> void:
 
 func _on_2pigeonarea_body_entered(body: CharacterBody2D) -> void:
 	velocity.y += 4.5 * JUMP_VELOCITY
+
+
+func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+	youwin.emit()
+	hide()
