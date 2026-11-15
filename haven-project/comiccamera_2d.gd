@@ -1,8 +1,10 @@
 extends Camera2D
 
+@onready var trumpets: AudioStreamPlayer2D = $"../trumpets"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	trumpets.play()
 	position = Vector2(-780, -386)
 	zoom = Vector2(1.555, 1.25)
 	await get_tree().create_timer(2).timeout
@@ -10,6 +12,8 @@ func _ready() -> void:
 		position += Vector2(15.6, 7.72)
 		zoom -= Vector2(0.021, 0.0149)
 		await get_tree().create_timer(0.01).timeout
+	await get_tree().create_timer(3).timeout
+	get_tree().quit()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

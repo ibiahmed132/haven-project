@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dpoj6g0ytod35" path="res://drive-download-20261114T131144Z-1-001/Outro Comic.png" id="1_je4j8"]
 [ext_resource type="Script" uid="uid://b5joh1yi7ki8q" path="res://comiccamera_2d.gd" id="2_xsloa"]
+[ext_resource type="AudioStream" uid="uid://bgll50yhib050" path="res://drive-download-20261114T131144Z-1-001/(benkirb)trumpet_fanfare.mp3" id="3_j1pr5"]
 
 [node name="outrocomic" type="Node2D" unique_id=693721198]
 
@@ -11,3 +12,6 @@ texture = ExtResource("1_je4j8")
 [node name="comiccamera2d" type="Camera2D" parent="." unique_id=880392180]
 zoom = Vector2(0.505, 0.505)
 script = ExtResource("2_xsloa")
+
+[node name="trumpets" type="AudioStreamPlayer2D" parent="." unique_id=1872430615]
+stream = ExtResource("3_j1pr5")

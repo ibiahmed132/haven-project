@@ -4,7 +4,7 @@ var SPEED = 400
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$"../Marshy/CollisionShape2D".gameover.connect(_on_gameover)
+	$"../Marshy/MarshyCollisionShape2D".gameover.connect(_on_gameover)
 	show()
 	position.x = -280
 	position.y = -1250

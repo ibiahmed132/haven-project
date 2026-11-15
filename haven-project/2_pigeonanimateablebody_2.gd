@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$"../Marshy/CollisionShape2D".gameover.connect(_on_gameover)
+	$"../Marshy/MarshyCollisionShape2D".gameover.connect(_on_gameover)
 
 
 func _on_marshy_pigeontime() -> void:

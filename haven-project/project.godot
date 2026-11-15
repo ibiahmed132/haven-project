@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="haven-project"
-run/main_scene="uid://cby3u46xcupqq"
+run/main_scene="uid://bpa5xecylnkqy"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -14,9 +14,10 @@ var is_down = false
 signal pigeontime
 signal youwin
 
-@onready var playbox = $CollisionShape2D
+@onready var playbox = $MarshyCollisionShape2D
 
 func _ready() -> void:
+	position = Vector2(290, 0)
 	sound_player.play()
 
 func _physics_process(delta: float) -> void:
