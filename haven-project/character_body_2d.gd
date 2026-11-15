@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var hold_timer: Timer = $HoldTimer
 @onready var sound_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var megabouncesound: AudioStreamPlayer2D = $megabounce
+
 
 const SPEED = 200
 const JUMP_VELOCITY = -400.0
@@ -57,6 +59,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 		else:
 			velocity.y = 1.4 * JUMP_VELOCITY
+			megabouncesound.play()
 			megabounce = 0
 	
 	move_and_slide()

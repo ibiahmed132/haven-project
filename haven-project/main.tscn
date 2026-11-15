@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c8604ggs2m5ja" path="res://drive-download-20261114T131144Z-1-001/Health Hearts Melly.png" id="7_vivmo"]
 [ext_resource type="Script" uid="uid://dbxb2w3e86mcw" path="res://lives.gd" id="8_2cqfq"]
 [ext_resource type="Script" uid="uid://r0im33bqu6f8" path="res://collision_shape_2d.gd" id="8_5vw27"]
+[ext_resource type="AudioStream" uid="uid://cstgjk43f7bjw" path="res://sounds-20261115T102900Z-1-001/sounds/super_jump.mp3" id="9_4k2k6"]
 [ext_resource type="Script" uid="uid://def4kqs1hrv7f" path="res://hold_timer.gd" id="9_vivmo"]
 [ext_resource type="Texture2D" uid="uid://b4ch6bv4idfjf" path="res://drive-download-20261114T131144Z-1-001/Night BG.png" id="11_074og"]
 [ext_resource type="AudioStream" uid="uid://c4iehns6hinc5" path="res://sounds-20261115T102900Z-1-001/sounds/damage_1.wav" id="12_seu75"]
@@ -388,6 +389,9 @@ script = ExtResource("6_qsp4k")
 
 [node name="Marshy" type="CharacterBody2D" parent="." unique_id=1777970946]
 script = ExtResource("1_h2yge")
+
+[node name="megabounce" type="AudioStreamPlayer2D" parent="Marshy" unique_id=741089380]
+stream = ExtResource("9_4k2k6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marshy" unique_id=62284239]
 rotation = 0.15009831

@@ -1,3 +1,13 @@
 [gd_scene format=3 uid="uid://d0wo8h4seonto"]
 
+[ext_resource type="Texture2D" uid="uid://dpoj6g0ytod35" path="res://drive-download-20261114T131144Z-1-001/Outro Comic.png" id="1_je4j8"]
+[ext_resource type="Script" uid="uid://b5joh1yi7ki8q" path="res://comiccamera_2d.gd" id="2_xsloa"]
+
 [node name="outrocomic" type="Node2D" unique_id=693721198]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2024146067]
+texture = ExtResource("1_je4j8")
+
+[node name="comiccamera2d" type="Camera2D" parent="." unique_id=880392180]
+zoom = Vector2(0.505, 0.505)
+script = ExtResource("2_xsloa")
