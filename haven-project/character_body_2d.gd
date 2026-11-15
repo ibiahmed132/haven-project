@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		if megabounce == 0:
 			velocity += get_gravity() * delta
 		elif megabounce == 1 and not is_down:
-			velocity += 10 * get_gravity() * delta
+			velocity += 11 * get_gravity() * delta
 			megabounce = 1
 			
 	if is_on_floor():
