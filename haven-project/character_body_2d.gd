@@ -8,8 +8,12 @@ const JUMP_VELOCITY = -400.0
 var megabounce = 0
 var is_down = false
 
+@onready var playbox = $CollisionShape2D
+
 func _physics_process(delta: float) -> void:
-	print(position.y)
+	var lives = playbox.health
+	if lives == 0:
+		return
  	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -37,7 +41,7 @@ func _physics_process(delta: float) -> void:
 			
 		if megabounce == 0:
 			velocity += get_gravity() * delta
-		elif megabounce == 1 and not is_down:
+		elif megabounce == 1 and not is_down:    
 			velocity += 11 * get_gravity() * delta
 			megabounce = 1
 			
