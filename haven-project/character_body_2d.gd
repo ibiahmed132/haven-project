@@ -2,11 +2,13 @@ extends CharacterBody2D
 
 @onready var hold_timer: Timer = $HoldTimer
 
-const SPEED = 300.0
+const SPEED = 200
 const JUMP_VELOCITY = -400.0
 
 var megabounce = 0
 var is_down = false
+
+signal pigeontime
 
 @onready var playbox = $CollisionShape2D
 
@@ -57,3 +59,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_hold_timer_timeout() -> void:
 	is_down = false
+
+
+func _on_pigeonarea_body_entered(body: Node2D) -> void:
+	pigeontime.emit()
