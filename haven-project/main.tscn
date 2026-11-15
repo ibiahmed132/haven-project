@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://bpa5xecylnkqy"]
 
-[ext_resource type="Texture2D" uid="uid://65oe14nwuyxq" path="res://Screenshot 2026-11-14 113417.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dtisc1dlw3o1a" path="res://pigeonanimateablebody.gd" id="1_getpj"]
 [ext_resource type="Script" uid="uid://c36c5o5tgifym" path="res://character_body_2d.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://e38wa8aaww42" path="res://main.gd" id="1_jq2sk"]
 [ext_resource type="Texture2D" uid="uid://cc3urksycs27r" path="res://drive-download-20261114T131144Z-1-001/(Polar_34) Tiling Dirt just in case.png" id="1_yaehf"]
+[ext_resource type="Texture2D" uid="uid://bkqbi2hyemg32" path="res://drive-download-20261114T131144Z-1-001/Cloud.png" id="2_4k2k6"]
 [ext_resource type="Texture2D" uid="uid://dyep0tygpndwo" path="res://drive-download-20261114T131144Z-1-001/Scary Traced Robin.png" id="2_d13ii"]
 [ext_resource type="Texture2D" uid="uid://cypwxtwtggf2u" path="res://marshy1.png" id="2_w48qg"]
 [ext_resource type="Script" uid="uid://cxasf1dwevcsa" path="res://2_pigeonanimateablebody_2.gd" id="3_1u8w0"]
@@ -332,7 +332,7 @@ script = ExtResource("1_jq2sk")
 
 [node name="Cloud" type="Sprite2D" parent="." unique_id=130910414]
 position = Vector2(160, -3186)
-texture = ExtResource("1_0xm2m")
+texture = ExtResource("2_4k2k6")
 
 [node name="Area2D" type="Area2D" parent="Cloud" unique_id=1543730506]
 
@@ -416,7 +416,6 @@ volume_db = 24.0
 [node name="Camera2D" type="Camera2D" parent="Marshy" unique_id=454720460]
 
 [node name="Sprite2D" type="Sprite2D" parent="Marshy/Camera2D" unique_id=1970974133]
-visible = false
 z_index = -13
 texture = ExtResource("11_074og")
 
@@ -428,7 +427,6 @@ sprite_frames = SubResource("SpriteFrames_57qmd")
 script = ExtResource("8_2cqfq")
 
 [node name="EndScreen" type="Sprite2D" parent="Marshy/Camera2D" unique_id=1769839366]
-visible = false
 position = Vector2(-0.8888198, -0.500003)
 scale = Vector2(0.49922848, 0.4992284)
 texture = ExtResource("16_yaehf")

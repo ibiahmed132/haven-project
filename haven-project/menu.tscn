@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cby3u46xcupqq"]
+
+[ext_resource type="Texture2D" uid="uid://qdqtrtx8ruj3" path="res://drive-download-20261114T131144Z-1-001/Start Screen.png" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://m6nv5xt8l5ry" path="res://menu.gd" id="1_ouk20"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 142.85622
+height = 785.03455
+
+[node name="menu" type="Node2D" unique_id=105514031]
+script = ExtResource("1_ouk20")
+
+[node name="buttonarea2d" type="Area2D" parent="." unique_id=487633329]
+position = Vector2(552, 336)
+rotation = 0.15009831
+
+[node name="startbuttoncollisionarea" type="CollisionShape2D" parent="buttonarea2d" unique_id=429392640]
+z_index = 4
+position = Vector2(61.41888, 4.870469)
+rotation = -1.7592919
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="menu" type="Sprite2D" parent="." unique_id=1664865165]
+z_index = -57
+texture = ExtResource("1_lti8b")
+
+[node name="menucamera" type="Camera2D" parent="." unique_id=1124827906]
+zoom = Vector2(0.5, 0.49)
+
+[connection signal="input_event" from="buttonarea2d" to="." method="_on_buttonarea_2d_input_event"]
+[connection signal="mouse_entered" from="buttonarea2d" to="." method="_on_buttonarea_2d_mouse_entered"]

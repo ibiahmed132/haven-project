@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bj5poma8c46pj"]
+
+[ext_resource type="Texture2D" uid="uid://j5q2yo5rwlpn" path="res://drive-download-20261114T131144Z-1-001/INTRO COMIC.png" id="1_ql7p0"]
+[ext_resource type="Script" uid="uid://cw7tsug8a3kbu" path="res://introcomiccamera.gd" id="2_bxi1w"]
+[ext_resource type="AudioStream" uid="uid://da55gq2ooqxk6" path="res://sounds-20261115T102900Z-1-001/sounds/starting_buildup_music.wav" id="3_1vvfn"]
+
+[node name="introcomic" type="Node2D" unique_id=1519818943]
+
+[node name="introcomicsprite2d" type="Sprite2D" parent="." unique_id=76564663]
+texture = ExtResource("1_ql7p0")
+
+[node name="introcomiccamera" type="Camera2D" parent="." unique_id=1163357065]
+position = Vector2(574, 344)
+zoom = Vector2(1, 0.98)
+script = ExtResource("2_bxi1w")
+
+[node name="introbuildupmusic" type="AudioStreamPlayer2D" parent="." unique_id=409270551]
+stream = ExtResource("3_1vvfn")
