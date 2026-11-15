@@ -61,5 +61,9 @@ func _on_hold_timer_timeout() -> void:
 	is_down = false
 
 
-func _on_pigeonarea_body_entered(body: Node2D) -> void:
-	pigeontime.emit()
+func _on_pigeonarea_body_entered(body: CharacterBody2D) -> void:
+	velocity.y += 4.5 * JUMP_VELOCITY
+
+
+func _on_2pigeonarea_body_entered(body: CharacterBody2D) -> void:
+	velocity.y += 4.5 * JUMP_VELOCITY
